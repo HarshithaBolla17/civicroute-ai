@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CivicRoute AI</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="brand">
+      <span class="pulse"></span>
+      <span class="brand-name">CivicRoute<span class="accent">AI</span></span>
+    </div>
+    <h1>Report a civic issue.<br>Get it to the right desk, instantly.</h1>
+    <p class="tagline">An AI agent classifies your report and routes it to the right municipal department &mdash; no app to install, no wrong desk.</p>
+    <div class="sdg-chip">SDG 11 &middot; Sustainable Cities &amp; Communities</div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="file">File a report</button>
+    <button class="tab" data-tab="track">Track my reports</button>
+  </nav>
+
+  <!-- FILE A REPORT -->
+  <section class="panel" id="panel-file">
+    <div class="grid">
+      <div class="card form-card">
+        <h2>File a report</h2>
+        <div class="row2">
+          <label>Your name
+            <input id="name" type="text" placeholder="e.g. Harshitha" />
+          </label>
+          <label>Phone number
+            <input id="phone" type="tel" placeholder="e.g. 98765 43210" />
+          </label>
+        </div>
+        <label>Ward / zone
+          <input id="zone" type="text" placeholder="e.g. Zone 4" />
+        </label>
+        <label>What's the issue?
+          <textarea id="issue" rows="3" placeholder="e.g. streetlight not working near the park"></textarea>
+        </label>
+        <div class="actions">
+          <button id="submitBtn" class="primary">File report</button>
+          <button id="resetBtn" class="ghost">Reset demo data</button>
+        </div>
+        <p id="statusMsg" class="status"></p>
+      </div>
+
+      <div class="card result-card" id="resultCard" hidden>
+        <h2>Your ticket</h2>
+        <div id="resultBody"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACK MY REPORTS -->
+  <section class="panel" id="panel-track" hidden>
+    <div class="card track-card">
+      <h2>Track my reports</h2>
+      <p class="sub">No account needed &mdash; look up every report filed with your phone number.</p>
+      <div class="track-row">
+        <input id="trackPhone" type="tel" placeholder="Enter your phone number" />
+        <button id="trackBtn" class="primary">Search</button>
+      </div>
+      <div id="trackResults" class="track-results"></div>
+    </div>
+  </section>
+
+  <section class="card officers-card">
+    <h2>Field officers on duty</h2>
+    <div id="officersGrid" class="officers-grid"></div>
+  </section>
+
+  <footer>
+    <p>Built with LangGraph + Gemini &middot; FastAPI &middot; deployed on Render &amp; Vercel</p>
+  </footer>
+</div>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

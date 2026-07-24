@@ -1,0 +1,315 @@
+:root {
+  --ink: #1b1f1c;
+  --sub: #5c645d;
+  --line: #e2e0d6;
+  --bg: #faf8f2;
+  --card: #ffffff;
+  --teal: #0f6e56;
+  --teal-soft: #e1f5ee;
+  --amber: #b5730a;
+  --amber-soft: #faecda;
+  --coral: #b23a2e;
+  --coral-soft: #fbe7e3;
+  --blue-soft: #e6f1fb;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.wrap {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+/* ---------- Hero ---------- */
+.hero { margin-bottom: 1.75rem; }
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 1rem;
+}
+
+.pulse {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 0 4px var(--teal-soft);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 4px var(--teal-soft); }
+  50% { box-shadow: 0 0 0 7px var(--teal-soft); }
+}
+
+.brand-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--sub);
+}
+.brand-name .accent { color: var(--teal); }
+
+.hero h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2rem;
+  line-height: 1.2;
+  margin: 0 0 0.6rem;
+  letter-spacing: -0.01em;
+  max-width: 14ch;
+}
+
+.tagline {
+  color: var(--sub);
+  margin: 0 0 0.9rem;
+  font-size: 0.98rem;
+  max-width: 52ch;
+  line-height: 1.5;
+}
+
+.sdg-chip {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--teal);
+  background: var(--teal-soft);
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+}
+
+/* ---------- Tabs ---------- */
+.tabs {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.tab {
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.6rem 0.9rem;
+  border: none;
+  background: none;
+  color: var(--sub);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.tab.active {
+  color: var(--ink);
+  font-weight: 600;
+  border-bottom-color: var(--teal);
+}
+
+/* ---------- Layout ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+@media (max-width: 720px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.3rem 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.card h2 {
+  font-size: 1.05rem;
+  margin: 0 0 0.9rem;
+}
+
+.card .sub {
+  font-size: 0.85rem;
+  color: var(--sub);
+  margin: -0.5rem 0 1rem;
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--sub);
+  margin-bottom: 0.8rem;
+}
+
+input, textarea {
+  display: block;
+  width: 100%;
+  margin-top: 0.35rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--ink);
+  background: #fff;
+  resize: vertical;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--teal);
+}
+
+.actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+  flex-wrap: wrap;
+}
+
+button {
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+}
+
+button.primary {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #fff;
+  font-weight: 500;
+}
+
+button.primary:hover { background: #0c5c47; }
+button.ghost:hover { background: #f3f2ec; }
+button:disabled { opacity: 0.6; cursor: default; }
+
+.status {
+  min-height: 1.2rem;
+  font-size: 0.85rem;
+  color: var(--coral);
+  margin: 0.7rem 0 0;
+}
+
+/* ---------- Ticket result ---------- */
+.result-card { min-height: 140px; }
+
+.ticket-id {
+  font-size: 0.8rem;
+  color: var(--sub);
+  margin: 0 0 0.5rem;
+  font-family: "SF Mono", Consolas, monospace;
+}
+
+.ticket-route {
+  font-size: 0.98rem;
+  margin: 0 0 0.6rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.18rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-right: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.badge.routine { background: var(--teal-soft); color: var(--teal); }
+.badge.hazard { background: var(--coral-soft); color: var(--coral); }
+
+.reasoning {
+  font-size: 0.85rem;
+  color: var(--sub);
+  margin: 0 0 0.7rem;
+  line-height: 1.45;
+}
+
+.officer-line { font-size: 0.95rem; margin: 0; }
+
+/* ---------- Track panel ---------- */
+.track-row {
+  display: flex;
+  gap: 0.6rem;
+}
+.track-row input { margin-top: 0; }
+
+.track-results {
+  margin-top: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.track-ticket {
+  border: 1px solid var(--line);
+  border-left-width: 4px;
+  border-radius: 10px;
+  padding: 0.7rem 0.9rem;
+}
+.track-ticket.routine { border-left-color: var(--teal); }
+.track-ticket.hazard { border-left-color: var(--coral); }
+
+.track-ticket .meta {
+  font-size: 0.78rem;
+  color: var(--sub);
+  font-family: "SF Mono", Consolas, monospace;
+}
+.track-ticket .issue { font-size: 0.92rem; margin: 0.25rem 0; }
+.track-ticket .officer { font-size: 0.82rem; color: var(--sub); }
+
+.empty-state {
+  font-size: 0.88rem;
+  color: var(--sub);
+}
+
+/* ---------- Officers ---------- */
+.officers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.6rem;
+}
+
+.officer {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.6rem 0.75rem;
+}
+
+.officer .name { font-size: 0.9rem; font-weight: 500; }
+.officer .meta { font-size: 0.78rem; color: var(--sub); margin-top: 0.15rem; }
+
+.officer.free.roads { background: var(--teal-soft); }
+.officer.free.sanitation { background: var(--coral-soft); }
+.officer.free.electrical { background: var(--amber-soft); }
+.officer.free.water { background: var(--blue-soft); }
+.officer.busy { background: #f1efe8; }
+
+footer {
+  margin-top: 1.5rem;
+  font-size: 0.78rem;
+  color: var(--sub);
+  text-align: center;
+}
