@@ -1,12 +1,13 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+import uuid
+from datetime import datetime, timezone
 
 from agent import graph, officers_df, reset_officers
 
 app = FastAPI(title="CivicRoute AI")
 
-# Allow the frontend (hosted on a different domain, e.g. Vercel) to call this API.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -18,6 +19,7 @@ app.add_middleware(
 
 class CheckinRequest(BaseModel):
     name: str
+    phone: str          # <-- was missing, so it was silently dropped
     zone: str
     issue: str
 
@@ -32,6 +34,7 @@ def checkin(req: CheckinRequest):
     result = graph.invoke(
         {
             "name": req.name,
+            "phone": req.phone,
             "zone": req.zone,
             "issue": req.issue,
             "department": "",
@@ -40,13 +43,9 @@ def checkin(req: CheckinRequest):
             "assigned_officer": "",
         }
     )
+    result["ticket_id"] = f"CR-{uuid.uuid4().hex[:6].upper()}"
+    result["filed_at"] = datetime.now(timezone.utc).strftime("%b %d, %I:%M %p UTC")
     return result
-
-
-@app.get("/api/officers")
-def list_officers():
-    return officers_df.to_dict(orient="records")
-
 
 @app.post("/api/reset")
 def reset():
